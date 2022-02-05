@@ -2,6 +2,7 @@ const express = require('express');
 const Product = require('./model/product');
 const Order = require('./model/order');
 const Cart = require('./model/cart');
+const { CommandStartedEvent } = require('mongodb');
 const ObjectId = require('mongoose').ObjectId;
 require('./db/mongoose');
 
@@ -90,6 +91,16 @@ app.get('/getProduct/:title',(req,res)=>{
             console.log(req.params['title'])
         }
         res.send(rest)
+    })
+});
+
+app.get('/getCart',(req,res)=>{
+    Cart.find({},(err,rest)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.send(rest);
+        }
     })
 });
 app.listen(PORT,()=>{
