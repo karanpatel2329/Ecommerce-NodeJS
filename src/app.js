@@ -18,7 +18,7 @@ app.post('/addProduct',(req,res)=>{
         res.status(400).send(e);
     });
 });
-app.post('/createOrder',(req,res)=>{
+app.post('/placeOrder',(req,res)=>{
     const newOrder = new Order(req.body);
     newOrder.save().then(()=>{
         res.send("User Add Successfull"+newOrder);
@@ -93,6 +93,7 @@ app.get('/getProduct/:title',(req,res)=>{
         res.send(rest)
     })
 });
+
 
 app.get('/getCart',(req,res)=>{
     Cart.find({},(err,rest)=>{
