@@ -73,7 +73,15 @@ app.post('/addCart',async(req,res)=>{
     });
     }
 });
-
+app.get('/allProduct',(req,res)=>{
+    Product.find({},(err,rest)=>{
+        if(err){
+            res.send(err);
+        }else{
+            res.send(rest);
+        }
+    })
+})
 app.get('/getProduct/:title',(req,res)=>{
     //const title = req.params;
     Product.find({title:req.params['title']},(err,rest)=>{
