@@ -103,7 +103,14 @@ app.get('/getCart',(req,res)=>{
         }
     })
 });
-
+app.get('/clearCart',(req,res)=>{
+    Cart.deleteMany({},(err,rest)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.send(rest);
+        }});
+})
 app.get('/allOrder',(req,res)=>{
     Order.find({},(err,rest)=>{
         if(err){
