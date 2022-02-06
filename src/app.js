@@ -94,7 +94,6 @@ app.get('/getProduct/:title',(req,res)=>{
     })
 });
 
-
 app.get('/getCart',(req,res)=>{
     Cart.find({},(err,rest)=>{
         if(err){
@@ -104,6 +103,16 @@ app.get('/getCart',(req,res)=>{
         }
     })
 });
+
+app.get('/allOrder',(req,res)=>{
+    Order.find({},(err,rest)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.send(rest);
+        }
+    })
+})
 app.listen(PORT,()=>{
     console.log("Sever Started at "+PORT); 
 })
